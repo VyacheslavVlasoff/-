@@ -1,0 +1,15 @@
+D:\Visual Studio\StyleXAML\StyleXAML\bin\Debug\StyleXAML.exe.config
+D:\Visual Studio\StyleXAML\StyleXAML\bin\Debug\StyleXAML.exe
+D:\Visual Studio\StyleXAML\StyleXAML\bin\Debug\StyleXAML.pdb
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML.csprojAssemblyReference.cache
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\MainWindow.g.cs
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\App.g.cs
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML_MarkupCompile.cache
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML_MarkupCompile.lref
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\MainWindow.baml
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML.g.resources
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML.Properties.Resources.resources
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML.csproj.GenerateResource.cache
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML.csproj.CoreCompileInputs.cache
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML.exe
+D:\Visual Studio\StyleXAML\StyleXAML\obj\Debug\StyleXAML.pdb
