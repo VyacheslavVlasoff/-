@@ -1,0 +1,299 @@
+﻿<Window x:Name="VDA" x:Class="StyleXAML.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StyleXAML"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Viewbox>
+        <Grid Height="418">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="755*"/>
+                <ColumnDefinition Width="37*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="#FFE5D7EC" BorderThickness="1" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="60" Background="#FFE5D7EC" Margin="0,0,0,-1"/>
+            <Border BorderBrush="#FF740DA4" BorderThickness="1" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.501,0.5" Background="#FF740DA4" Grid.ColumnSpan="2"/>
+            <Label Content="VDA" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" FontFamily="Wide Latin" RenderTransformOrigin="0.505,0.457" Foreground="White"/>
+            <Label Content="Главная &gt; Посмотреть товары на складе&#xA;" HorizontalAlignment="Left" Margin="125,5,0,0" VerticalAlignment="Top" Width="657" FontFamily="Trebuchet MS" Foreground="White" FontSize="18" Height="35" Grid.ColumnSpan="2"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="10,54,0,0" VerticalAlignment="Top" Width="40">
+                <Border.Background>
+                    <ImageBrush ImageSource="album (2).jpg"/>
+                </Border.Background>
+            </Border>
+            <Border BorderBrush="Lime" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="10,99,0,0" VerticalAlignment="Top" Width="40">
+                <Border.Background>
+                    <ImageBrush ImageSource="album (3).jpg"/>
+                </Border.Background>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="10,144,0,0" VerticalAlignment="Top" Width="40">
+                <Border.Background>
+                    <ImageBrush ImageSource="album (4).jpg"/>
+                </Border.Background>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="10,189,0,0" VerticalAlignment="Top" Width="40">
+                <Border.Background>
+                    <ImageBrush ImageSource="album (5).jpg"/>
+                </Border.Background>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="10,234,0,0" VerticalAlignment="Top" Width="40">
+                <Border.Background>
+                    <ImageBrush ImageSource="album (7).jpg"/>
+                </Border.Background>
+            </Border>
+
+            <FlowDocumentScrollViewer Margin="65,45,10,0" Background="MediumPurple" Grid.ColumnSpan="2">
+                <FlowDocument>
+
+                    <Table CellSpacing="10">
+
+                        <Table.Columns>
+                            <TableColumn/>
+                            <TableColumn/>
+                            <TableColumn/>
+                            <TableColumn/>
+                        </Table.Columns>
+
+                        <TableRowGroup>
+
+                            <!-- Title row for the table. -->
+                            <TableRow Background="MediumPurple">
+                                <TableCell ColumnSpan="4" TextAlignment="Center">
+                                    <Paragraph FontSize="24pt" FontWeight="Bold">Товары на складе</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <!-- Header row for the table. -->
+                            <TableRow Background="LightSkyBlue">
+                                <TableCell>
+                                    <Paragraph FontSize="14pt" FontWeight="Bold">Название</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph FontSize="14pt" FontWeight="Bold">Категория</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph FontSize="14pt" FontWeight="Bold">Размер</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph FontSize="14pt" FontWeight="Bold">Количество</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Ironcast</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Толстовка</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>46</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>12</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow Background="LightCoral">
+                                <TableCell>
+                                    <Paragraph>Ironcast</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Толстовка</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>48</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>0</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Ironcast</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Толстовка</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>50</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>24</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Longly</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Джинсы</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>32</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>6</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Longly</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Джинсы</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>33</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>15</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Longly</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Джинсы</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>34</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>5</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Longly</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Джинсы</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>36</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>11</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Kigucorn</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Кигуруми</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>48</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>8</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Kigucorn</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Кигуруми</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>52</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>11</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>Kigucorn</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Кигуруми</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>54</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>4</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>ТВОЕ</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Рубашка</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>44</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>3</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>ТВОЕ</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Рубашка</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>46</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>14</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>ТВОЕ</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Рубашка</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>48</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>18</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>ТВОЕ</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>Рубашка</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>52</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>7</Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                        </TableRowGroup>
+                    </Table>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+
+        </Grid>
+    </Viewbox>
+</Window>
