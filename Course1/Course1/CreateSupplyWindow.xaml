@@ -1,0 +1,61 @@
+﻿<Window x:Class="Course1.CreateSupplyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Course1"
+        mc:Ignorable="d"
+        Title="Оформление поставки на товары" MinHeight="450" MinWidth="800">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="60" Source="icon.jpg"/>
+        <Label Content="Virtual Delivery Assistant" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="60" FontSize="42" Margin="60 0 0 0"/>
+
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 60 0 0">
+            <TabItem Header="Оформление поставки" Width="200" Height="30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="271*"/>
+                        <ColumnDefinition Width="483*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="CreateSupplyData" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 0 250 0"
+                              RowHeight="40" ColumnWidth="*" ColumnHeaderHeight="30" FontSize="14"
+                               CanUserAddRows="False" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn x:Name="CheckB" Width="50"/>
+                            <DataGridTextColumn x:Name="col1" Header="Название" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Тип продукции" Binding="{Binding Type}"/>
+                            <DataGridTextColumn Header="Размер" Binding="{Binding Size}"/>
+                            <DataGridTextColumn Header="Поставщик" Binding="{Binding Provider}"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,10,10,0" 
+                            Background="Honeydew" FontSize="22" Click="ButtonAdd" Name="BAdd" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Карзина" Width="200" Height="30">
+                <Grid>
+                    <DataGrid Name="CreateSupplyData2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 0 250 0"
+                              RowHeight="40" ColumnWidth="*" ColumnHeaderHeight="30" FontSize="14"
+                               CanUserAddRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn x:Name="CheckB2" Width="50" Binding="{Binding check}"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Тип продукции" Binding="{Binding Type}"/>
+                            <DataGridTextColumn Header="Размер" Binding="{Binding Size}"/>
+                            <DataGridTextColumn Header="Поставщик" Binding="{Binding Provider}"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}"/>
+                            <DataGridTextColumn Header="Количество" x:Name="QuantityColumn"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Оформить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="560,60,10,0" 
+                            Background="Honeydew" FontSize="22" Click="ButtonCreate" Name="BCreate"/>
+                    <Button Content="Обновить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="560,110,10,0" 
+                            Background="Honeydew" FontSize="22" Click="ButtonUpdate" Name="BUpdate"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
