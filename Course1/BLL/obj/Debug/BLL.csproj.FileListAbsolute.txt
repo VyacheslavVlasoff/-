@@ -1,0 +1,16 @@
+D:\Visual Studio\-\Course1\BLL\bin\Debug\BLL.dll.config
+D:\Visual Studio\-\Course1\BLL\bin\Debug\BLL.dll
+D:\Visual Studio\-\Course1\BLL\bin\Debug\BLL.pdb
+D:\Visual Studio\-\Course1\BLL\bin\Debug\DAL.dll
+D:\Visual Studio\-\Course1\BLL\bin\Debug\EntityFramework.dll
+D:\Visual Studio\-\Course1\BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Visual Studio\-\Course1\BLL\bin\Debug\DAL.pdb
+D:\Visual Studio\-\Course1\BLL\bin\Debug\DAL.dll.config
+D:\Visual Studio\-\Course1\BLL\bin\Debug\EntityFramework.xml
+D:\Visual Studio\-\Course1\BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Visual Studio\-\Course1\BLL\bin\Debug\ru\EntityFramework.resources.dll
+D:\Visual Studio\-\Course1\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\Visual Studio\-\Course1\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\Visual Studio\-\Course1\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\Visual Studio\-\Course1\BLL\obj\Debug\BLL.dll
+D:\Visual Studio\-\Course1\BLL\obj\Debug\BLL.pdb
