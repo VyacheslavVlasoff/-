@@ -27,3 +27,5 @@ D:\Visual Studio\-\Course1\Course1\obj\Debug\Course1.exe
 D:\Visual Studio\-\Course1\Course1\obj\Debug\Course1.pdb
 D:\Visual Studio\-\Course1\Course1\obj\Debug\CreateSupplyWindow.g.cs
 D:\Visual Studio\-\Course1\Course1\obj\Debug\CreateSupplyWindow.baml
+D:\Visual Studio\-\Course1\Course1\obj\Debug\CreateCommondityWindow.g.cs
+D:\Visual Studio\-\Course1\Course1\obj\Debug\CreateCommondityWindow.baml

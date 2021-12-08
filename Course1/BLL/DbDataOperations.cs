@@ -31,13 +31,22 @@ namespace BLL
             return new Commondity(db.COMMONDITY.Find(ID));
         }
 
-        public void CreateCommondity(COMMONDITY c)
+        public void UpdateCommondity(Commondity c)
+        {
+                COMMONDITY co = db.COMMONDITY.Find(c.Id);
+                co.NAME = c.Name;
+                co.COMMONDITY_TYPE = c.CommondityType;
+                co.SIZE = c.Size;
+                Save();
+        }
+
+        public void CreateCommondity(Commondity c)
         {
             db.COMMONDITY.Add(new COMMONDITY()
             {
-                NAME = c.NAME,
-                COMMONDITY_TYPE = c.COMMONDITY_TYPE,
-                SIZE = c.SIZE
+                NAME = c.Name,
+                COMMONDITY_TYPE = c.CommondityType,
+                SIZE = c.Size
             });
             Save();
         }
