@@ -12,15 +12,12 @@
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,60,0,0">
             <TabItem Header="Товары" Width="200" Height="30">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="498*"/>
-                        <ColumnDefinition Width="257*"/>
-                    </Grid.ColumnDefinitions>
+
                     <DataGrid Name="CommondityData" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 0 250 0"
                               RowHeight="40" ColumnWidth="*" ColumnHeaderHeight="30" FontSize="14"
                                CanUserAddRows="False" AutoGenerateColumns="False" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" CanUserReorder="False" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
                             <DataGridComboBoxColumn Header="Тип продукции" x:Name="CB" SelectedValueBinding="{Binding CommondityType}"/>
                             <DataGridTextColumn Header="Размер" Binding="{Binding Size}"/>
@@ -28,32 +25,33 @@
                     </DataGrid>
                     <Button Content="Сохранить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,10,10,0" 
                             Background="Honeydew" FontSize="22" Click="ButtonSave" Name="BSave" Grid.Column="1"/>
-                    <Button Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,60,10,0" 
-                            Background="Honeydew" FontSize="22" Click="ButtonAdd" Name="BAdd" Grid.Column="1"/>
-                    <Button Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,110,10,0"
+                    <Button Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,110,10,0" 
+                            Background="Honeydew" FontSize="22" Click="ButtonAdd" Name="BAdd" Grid.Column="1" Visibility="Hidden"/>
+                    <Button Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,60,10,0"
                             Background="Honeydew" FontSize="22" Click="ButtonDelete" Name="BDelete" Grid.Column="1"/>
                 </Grid>
             </TabItem>
 
             <TabItem Header="Поставки" Width="200" Height="30">
                 <Grid>
+                    
                     <DataGrid Name="SupplyData" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 0 250 0"
                               RowHeight="40" ColumnWidth="*" ColumnHeaderHeight="30" FontSize="14"
-                               CanUserAddRows="False" AutoGenerateColumns="False">
+                               CanUserAddRows="False" AutoGenerateColumns="False" Grid.ColumnSpan="3" SelectionChanged="SupplyData_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" IsReadOnly="True" CanUserReorder="False"/>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Цена" Binding="{Binding Cost}"/>
                             <DataGridTextColumn Header="Дата оформления" Binding="{Binding ApplicationDate}"/>
                             <DataGridTextColumn Header="Дата поставки" Binding="{Binding Path=DeliveryDate}"/>
-                            <DataGridTextColumn Header="Статус заказа" Binding="{Binding Status}"/>
+                            <DataGridComboBoxColumn x:Name="StatusBox" Header="Статус заказа" SelectedValueBinding="{Binding Status}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Изменить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="560,10,10,0" 
-                            Background="Honeydew" FontSize="22" Click="ChangeSupply" Name="ChangeS"/>
-                    <Button Content="Оформить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="560,60,10,0" 
-                            Background="Honeydew" FontSize="22" Click="AddSupply" Name="AddS"/>
-                    <Button Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="560,110,10,0"
-                            Background="Honeydew" FontSize="22" Click="DeleteSupply" Name="DeleteS"/>
+                    <Button Content="Изменить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,10,10,0" 
+                            Background="Honeydew" FontSize="22" Click="ChangeSupply" Name="ChangeS" Grid.Column="2"/>
+                    <Button Content="Оформить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,60,10,0" 
+                            Background="Honeydew" FontSize="22" Click="AddSupply" Name="AddS" Grid.Column="2"/>
+                    <Button Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,110,10,0"
+                            Background="Honeydew" FontSize="22" Click="DeleteSupply" Name="DeleteS" Grid.Column="2" Visibility="Hidden"/>
                 </Grid>
             </TabItem>
 
@@ -63,7 +61,7 @@
                               RowHeight="40" ColumnWidth="*" ColumnHeaderHeight="30" FontSize="14"
                                CanUserAddRows="False" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" CanUserReorder="False" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Продукция" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Адрес" Binding="{Binding Addres}"/>
                             <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}"/>

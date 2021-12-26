@@ -9,13 +9,10 @@ namespace DAL
     public partial class SUPPLY_LINE
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
+
         public int SUPPLY_ID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int COMMONDITY_ID { get; set; }
 
         public int QUANTITY { get; set; }

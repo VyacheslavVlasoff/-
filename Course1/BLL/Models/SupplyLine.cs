@@ -9,6 +9,8 @@ namespace BLL.Models
 {
     public partial class SupplyLine
     {
+        public int Id { get; set; }
+
         public int SupplyId { get; set; }
 
         public int CommondityId { get; set; }
@@ -18,12 +20,23 @@ namespace BLL.Models
         public decimal Cost { get; set; }
 
         public SupplyLine() { }
-        public SupplyLine(SupplyLine s)
+        public SupplyLine(SUPPLY_LINE i)
         {
-            SupplyId = s.SupplyId;
-            CommondityId = s.CommondityId;
-            Quantity = s.Quantity;
-            Cost = s.Cost;
+            Id = i.ID;
+            SupplyId = i.SUPPLY_ID;
+            CommondityId = i.COMMONDITY_ID;
+            Quantity = i.QUANTITY;
+            Cost = i.COST;
+        }
+        public SupplyLine(List<SUPPLY_LINE> s)
+        {
+            s.Select(i => new SupplyLine {
+                Id = i.ID,
+            SupplyId = i.SUPPLY_ID,
+            CommondityId = i.COMMONDITY_ID,
+            Quantity = i.QUANTITY,
+            Cost = i.COST
+        }).ToList();
         }
     }
 }

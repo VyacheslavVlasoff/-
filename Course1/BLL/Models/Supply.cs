@@ -17,7 +17,7 @@ namespace BLL.Models
 
         public int ApplicantId { get; set; }
 
-        public int StatusId { get; set; }
+        public int Status { get; set; }
 
         public decimal Cost { get; set; }
 
@@ -32,7 +32,7 @@ namespace BLL.Models
             ProviderId = s.PROVIDER_ID;
             WarehouseId = s.WAREHOUSE_ID;
             ApplicantId = s.APPLICANT_ID;
-            StatusId = s.STATUS_ID;
+            Status = s.STATUS_ID;
             Cost = s.COST;
             ApplicationDate = s.APPLICATION_DATE;
             DeliveryDate = s.DELIVERY_DATE;

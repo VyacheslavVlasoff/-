@@ -2,6 +2,7 @@
 using BLL;
 using BLL.Services;
 using BLL.Models;
+using BLL.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,9 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace Course1
 {
@@ -26,12 +30,22 @@ namespace Course1
     /// </summary>
     public partial class MainWindow : Window
     {
-        DBDataOperation dbcontext = new DBDataOperation();
+        ISupplyService service;
+        IDbCrud dbcontext;
+
         List<Commondity> allCommon;
         List<CommondityType> allCommonType;
 
         public MainWindow()
         {
+            InitializeComponent();
+            LoadData();
+        }
+
+        public MainWindow(IDbCrud crudDb, ISupplyService supplyservice)
+        {
+            service = supplyservice;
+            dbcontext = crudDb;
             InitializeComponent();
             LoadData();
         }
@@ -42,19 +56,22 @@ namespace Course1
             allCommonType = dbcontext.GetAllCommondityType();
 
             CommondityData.ItemsSource = allCommon;
-            SupplyData.ItemsSource = SupplyService.SupplyList();
-            WarehouseData.ItemsSource = SupplyService.createWarehouseLine();
+            //SupplyData.ItemsSource = SupplyService.SupplyList();
+            SupplyData.ItemsSource = dbcontext.GetAllSupply();
+            WarehouseData.ItemsSource = service.createWarehouseLine();
 
             CB.ItemsSource = allCommonType;
             CB.DisplayMemberPath = "Type";
             CB.SelectedValuePath = "Id";
+
+            StatusBox.ItemsSource = dbcontext.GetAllStatus();
+            StatusBox.DisplayMemberPath = "StatusSup";
+            StatusBox.SelectedValuePath = "Id";
             
         }
 
         private void ButtonSave(object sender, RoutedEventArgs e)
         {
-
-
             for (int i = 0; i < CommondityData.Items.Count; i++)
             {
                 Commondity c = new Commondity
@@ -112,20 +129,43 @@ namespace Course1
 
         private void AddSupply(object sender, RoutedEventArgs e)
         {
-            CreateSupplyWindow supplyWindow = new CreateSupplyWindow();
+            CreateSupplyWindow supplyWindow = new CreateSupplyWindow(dbcontext, service);
             supplyWindow.Show();
-            SupplyData.ItemsSource = SupplyService.SupplyList();
+
+            SupplyData.ItemsSource = dbcontext.GetAllSupply();
+            WarehouseData.ItemsSource = service.createWarehouseLine();
         }
 
         private void DeleteSupply(object sender, RoutedEventArgs e)
         {
             var index = SupplyData.SelectedIndex;
             if (index != -1)
-            {            
+            {
+                dbcontext.DeleteSupplyLine(Int32.Parse((SupplyData.Columns[0].GetCellContent(SupplyData.Items[index]) as TextBlock).Text));
                 dbcontext.DeleteSupply(Int32.Parse((SupplyData.Columns[0].GetCellContent(SupplyData.Items[index]) as TextBlock).Text));
-                SupplyData.ItemsSource = SupplyService.SupplyList();
+                SupplyData.ItemsSource = dbcontext.GetAllSupply();
             }
             else MessageBox.Show("Ни один элемент не выбран!");
+        }
+
+        private void SupplyData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var i = SupplyData.SelectedIndex;
+            if (i != -1)
+            {
+                Supply c = dbcontext.GetSupply(int.Parse((SupplyData.Columns[0].GetCellContent(SupplyData.Items[i]) as TextBlock).Text));
+                c.Status = (SupplyData.Columns[4].GetCellContent(SupplyData.Items[i]) as ComboBox).SelectedIndex + 1;
+                dbcontext.UpdateSupply(c);
+                if (c.DeliveryDate == null &&
+                    (SupplyData.Columns[4].GetCellContent(SupplyData.Items[i]) as ComboBox).SelectedIndex + 1 == 3)
+                {
+                    c.DeliveryDate = DateTime.Now;
+                    c.Status = (SupplyData.Columns[4].GetCellContent(SupplyData.Items[i]) as ComboBox).SelectedIndex + 1;
+                    dbcontext.UpdateSupply(c);
+                    SupplyData.ItemsSource = dbcontext.GetAllSupply();
+                }
+
+            }
         }
     }
 }
