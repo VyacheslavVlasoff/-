@@ -97,6 +97,7 @@
     <Compile Include="Models\Commondity.cs" />
     <Compile Include="Models\CommondityType.cs" />
     <Compile Include="Models\Providers.cs" />
+    <Compile Include="Models\ProviderSupplyStock.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Supply.cs" />
     <Compile Include="Models\SupplyLine.cs" />

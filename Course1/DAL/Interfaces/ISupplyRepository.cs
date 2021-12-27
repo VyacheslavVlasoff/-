@@ -9,7 +9,7 @@ namespace DAL.Interfaces
     public interface ISupplyRepository
     {
         List<CreateSupplyData> WarehouseCheck(int idProv);
-        bool MakeSupply(List<CreateSupplyData> csd);
+        bool MakeSupply(List<CreateSupplyData> csd, int IdWar);
         List<CreateWarehouse> createWarehouseLine();
     }
 }

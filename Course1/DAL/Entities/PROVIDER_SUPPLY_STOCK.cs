@@ -16,6 +16,8 @@ namespace DAL
 
         public decimal COST { get; set; }
 
+        public bool VIGODA { get; set; }
+
         public virtual COMMONDITY COMMONDITY { get; set; }
 
         public virtual PROVIDER PROVIDER { get; set; }

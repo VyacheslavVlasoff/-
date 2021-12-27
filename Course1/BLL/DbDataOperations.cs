@@ -185,6 +185,50 @@ namespace BLL
         }
         #endregion
 
+        #region ProviderSupplyStock
+        public List<ProviderSupplyStock> GetAllProviderSupplyStock()
+        {
+            return db.PROVIDER_SUPPLY_STOCK.GetList().Select(i => new ProviderSupplyStock(i)).ToList();
+        }
+
+        public void CreateProviderSupplyStock(ProviderSupplyStock c)
+        {
+            db.PROVIDER_SUPPLY_STOCK.Create(new PROVIDER_SUPPLY_STOCK()
+            {
+                COMMONDITY_ID = c.CommondityId,
+                PROVIDER_ID = c.ProviderId,
+                COST = c.Cost
+            });
+            Save();
+        }
+        public void UpdateProviderSupplyStock(int ID, bool k)
+        {
+            PROVIDER_SUPPLY_STOCK pss = db.PROVIDER_SUPPLY_STOCK.GetItem(ID);
+            pss.VIGODA = k;
+            Save();
+        }
+
+
+        public void UpdateProviderSupplyStock(ProviderSupplyStock c)
+        {
+            PROVIDER_SUPPLY_STOCK co = db.PROVIDER_SUPPLY_STOCK.GetItem(c.Id);
+            co.COMMONDITY_ID = c.CommondityId;
+            co.PROVIDER_ID = c.ProviderId;
+            co.COST = c.Cost;
+            Save();
+        }
+
+        public void DeleteProviderSupplyStock(int id)
+        {
+            PROVIDER_SUPPLY_STOCK c = db.PROVIDER_SUPPLY_STOCK.GetItem(id);
+            if (c != null)
+            {
+                db.PROVIDER_SUPPLY_STOCK.Delete(c.ID);
+                Save();
+            }
+        }
+        #endregion
+
         #region Status
         public List<Status> GetAllStatus()
         {

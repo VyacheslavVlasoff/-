@@ -32,6 +32,12 @@ namespace BLL.Interfaces
 
         List<Providers> GetAllProviders();
 
+        List<ProviderSupplyStock> GetAllProviderSupplyStock();
+        void CreateProviderSupplyStock(ProviderSupplyStock item);
+        void DeleteProviderSupplyStock(int Id);
+        void UpdateProviderSupplyStock(ProviderSupplyStock item);
+        void UpdateProviderSupplyStock(int ID, bool k);
+
         List<Status> GetAllStatus();
     }
 }

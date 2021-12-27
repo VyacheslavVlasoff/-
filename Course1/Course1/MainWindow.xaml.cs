@@ -33,9 +33,6 @@ namespace Course1
         ISupplyService service;
         IDbCrud dbcontext;
 
-        List<Commondity> allCommon;
-        List<CommondityType> allCommonType;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -51,61 +48,88 @@ namespace Course1
         }
 
         private void LoadData()
-        {
-            allCommon = dbcontext.GetAllCommondity();
-            allCommonType = dbcontext.GetAllCommondityType();
+        { 
+            CommondityData.ItemsSource = dbcontext.GetAllProviderSupplyStock();
+            CoBo.ItemsSource = dbcontext.GetAllCommondity(); ;
+            CoBo.DisplayMemberPath = "Name";
+            CoBo.SelectedValuePath = "Id";
 
-            CommondityData.ItemsSource = allCommon;
-            //SupplyData.ItemsSource = SupplyService.SupplyList();
+            CoBo2.ItemsSource = dbcontext.GetAllProviders(); ;
+            CoBo2.DisplayMemberPath = "CompanyName";
+            CoBo2.SelectedValuePath = "Id";
+            
             SupplyData.ItemsSource = dbcontext.GetAllSupply();
             WarehouseData.ItemsSource = service.createWarehouseLine();
-
-            CB.ItemsSource = allCommonType;
-            CB.DisplayMemberPath = "Type";
-            CB.SelectedValuePath = "Id";
 
             StatusBox.ItemsSource = dbcontext.GetAllStatus();
             StatusBox.DisplayMemberPath = "StatusSup";
             StatusBox.SelectedValuePath = "Id";
-            
         }
 
         private void ButtonSave(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < CommondityData.Items.Count; i++)
             {
-                Commondity c = new Commondity
+                ProviderSupplyStock c = new ProviderSupplyStock
                 {
                     Id = int.Parse((CommondityData.Columns[0].GetCellContent(CommondityData.Items[i]) as TextBlock).Text),
-                    Name = (CommondityData.Columns[1].GetCellContent(CommondityData.Items[i]) as TextBlock).Text,
-                    CommondityType = (CommondityData.Columns[2].GetCellContent(CommondityData.Items[i]) as ComboBox).SelectedIndex + 1,
-                    Size = int.Parse((CommondityData.Columns[3].GetCellContent(CommondityData.Items[i]) as TextBlock).Text)
+                    CommondityId = int.Parse((CommondityData.Columns[1].GetCellContent(CommondityData.Items[i]) as ComboBox).SelectedValue.ToString()),
+                    ProviderId = (CommondityData.Columns[2].GetCellContent(CommondityData.Items[i]) as ComboBox).SelectedIndex + 1,
+                    Cost = decimal.Parse((CommondityData.Columns[3].GetCellContent(CommondityData.Items[i]) as TextBlock).Text)
                 };
-                dbcontext.UpdateCommondity(c);
+                dbcontext.UpdateProviderSupplyStock(c);
             }
 
-            CommondityData.ItemsSource = allCommon;
+            for (int i = 0; i < CommondityData.Items.Count - 1; i++)
+            {
+                for (int j = i + 1; j < CommondityData.Items.Count; j++)
+                {
+                    var sr1 = (CommondityData.Columns[1].GetCellContent(CommondityData.Items[i]) as ComboBox).SelectedIndex;
+                    var sr2 = (CommondityData.Columns[1].GetCellContent(CommondityData.Items[j]) as ComboBox).SelectedIndex;
+                    var sr3 = (CommondityData.Columns[2].GetCellContent(CommondityData.Items[i]) as ComboBox).SelectedIndex;
+                    var sr4 = (CommondityData.Columns[2].GetCellContent(CommondityData.Items[j]) as ComboBox).SelectedIndex;
+                    if (sr1 == sr2 && sr3 != sr4)
+                    {
+                        var s1 = int.Parse((CommondityData.Columns[3].GetCellContent(CommondityData.Items[i]) as TextBlock).Text);
+                        var s2 = int.Parse((CommondityData.Columns[3].GetCellContent(CommondityData.Items[j]) as TextBlock).Text);
+                        var idv1 = int.Parse((CommondityData.Columns[0].GetCellContent(CommondityData.Items[i]) as TextBlock).Text);
+                        var idv2 = int.Parse((CommondityData.Columns[0].GetCellContent(CommondityData.Items[j]) as TextBlock).Text);
+                        if (s1 < s2)
+                        {
+                            dbcontext.UpdateProviderSupplyStock(idv1, true);
+                            dbcontext.UpdateProviderSupplyStock(idv2, false);
+                        }
+                        else
+                        {
+                            dbcontext.UpdateProviderSupplyStock(idv2, true);
+                            dbcontext.UpdateProviderSupplyStock(idv1, false);
+                        }
+                    }
+                }
+            }
+            CommondityData.ItemsSource = dbcontext.GetAllProviderSupplyStock();
             MessageBox.Show("Изменения сохранены");
         }
 
         private void ButtonAdd(object sender, RoutedEventArgs e)
         {
             CreateCommondityWindow ccw = new CreateCommondityWindow();
-            ccw.CBCommondity.ItemsSource = allCommonType;
-            ccw.CBCommondity.DisplayMemberPath = "Type";
-            //ccw.CBCommondity.SelectedValuePath = "Id";
+            ccw.CBCommondity.ItemsSource = dbcontext.GetAllCommondity();
+            ccw.CBCommondity.DisplayMemberPath = "Name";
+            ccw.CBProvider.ItemsSource = dbcontext.GetAllProviders();
+            ccw.CBProvider.DisplayMemberPath = "CompanyName";
 
             ccw.ShowDialog();
             if (ccw.DialogResult.Value) return;
 
-            Commondity c = new Commondity();
-            c.Name = ccw.TBCommondity.Text;
-            c.CommondityType = ccw.CBCommondity.SelectedIndex + 1;
-            c.Size = int.Parse(ccw.CBCommonditySize.Text);
+            ProviderSupplyStock c = new ProviderSupplyStock();
+            c.CommondityId = ccw.CBCommondity.SelectedIndex+1;
+            c.ProviderId = ccw.CBProvider.SelectedIndex + 1;
+            c.Cost = decimal.Parse(ccw.TBCost.Text);
 
-            dbcontext.CreateCommondity(c);
-            allCommon = dbcontext.GetAllCommondity();
-            CommondityData.ItemsSource = allCommon;
+            dbcontext.CreateProviderSupplyStock(c);
+
+            CommondityData.ItemsSource = dbcontext.GetAllProviderSupplyStock();
 
             MessageBox.Show("Новый товар добавлен");
         }
@@ -115,9 +139,8 @@ namespace Course1
             var index = CommondityData.SelectedIndex;
             if (index != -1)
             {
-                dbcontext.DeleteCommondity(Int32.Parse((CommondityData.Columns[0].GetCellContent(CommondityData.Items[index]) as TextBlock).Text));
-                allCommon = dbcontext.GetAllCommondity();
-                CommondityData.ItemsSource = allCommon;
+                dbcontext.DeleteProviderSupplyStock(Int32.Parse((CommondityData.Columns[0].GetCellContent(CommondityData.Items[index]) as TextBlock).Text));
+                CommondityData.ItemsSource = dbcontext.GetAllProviderSupplyStock();
             }
             else MessageBox.Show("Ни один элемент не выбран!");
         }
@@ -166,6 +189,11 @@ namespace Course1
                 }
 
             }
+        }
+
+        private void CommondityData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
         }
     }
 }

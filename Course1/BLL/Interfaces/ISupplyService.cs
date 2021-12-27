@@ -10,7 +10,7 @@ namespace BLL.Interfaces
     public interface ISupplyService
     {
         List<SupplyService.CreateSupplyData> WarehouseCheck(int idProv);
-        bool MakeSupply(List<SupplyService.CreateSupplyData> csd);
+        bool MakeSupply(List<SupplyService.CreateSupplyData> csd, int IdWar);
         List<SupplyService.CreateWarehouse> createWarehouseLine();
 
     }

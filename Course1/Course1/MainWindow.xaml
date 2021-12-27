@@ -12,21 +12,34 @@
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,60,0,0">
             <TabItem Header="Товары" Width="200" Height="30">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="74*"/>
+                        <ColumnDefinition Width="303*"/>
+                    </Grid.ColumnDefinitions>
 
                     <DataGrid Name="CommondityData" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 0 250 0"
                               RowHeight="40" ColumnWidth="*" ColumnHeaderHeight="30" FontSize="14"
-                               CanUserAddRows="False" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                               CanUserAddRows="False" AutoGenerateColumns="False" Grid.ColumnSpan="2" SelectionChanged="CommondityData_SelectionChanged">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding vigoda}" Value="true">
+                                        <Setter Property="Background" Value="GreenYellow"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
-                            <DataGridComboBoxColumn Header="Тип продукции" x:Name="CB" SelectedValueBinding="{Binding CommondityType}"/>
-                            <DataGridTextColumn Header="Размер" Binding="{Binding Size}"/>
+                            <DataGridComboBoxColumn Header="Название" x:Name="CoBo" SelectedValueBinding="{Binding CommondityId}"/>
+                            <DataGridComboBoxColumn Header="Поставщик" x:Name="CoBo2" SelectedValueBinding="{Binding ProviderId}"/>
+                            <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Сохранить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,10,10,0" 
                             Background="Honeydew" FontSize="22" Click="ButtonSave" Name="BSave" Grid.Column="1"/>
                     <Button Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,110,10,0" 
-                            Background="Honeydew" FontSize="22" Click="ButtonAdd" Name="BAdd" Grid.Column="1" Visibility="Hidden"/>
+                            Background="Honeydew" FontSize="22" Click="ButtonAdd" Name="BAdd" Grid.Column="1"/>
                     <Button Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,60,10,0"
                             Background="Honeydew" FontSize="22" Click="ButtonDelete" Name="BDelete" Grid.Column="1"/>
                 </Grid>
@@ -34,7 +47,7 @@
 
             <TabItem Header="Поставки" Width="200" Height="30">
                 <Grid>
-                    
+
                     <DataGrid Name="SupplyData" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 0 250 0"
                               RowHeight="40" ColumnWidth="*" ColumnHeaderHeight="30" FontSize="14"
                                CanUserAddRows="False" AutoGenerateColumns="False" Grid.ColumnSpan="3" SelectionChanged="SupplyData_SelectionChanged">

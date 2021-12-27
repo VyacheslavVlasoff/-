@@ -8,20 +8,15 @@
         Title="Добавление нового продукта" MaxHeight="550" MaxWidth="600" MinHeight="550" MinWidth="600">
     <Grid Margin="0,2,2,83" RenderTransformOrigin="0.542,0.496">
         <Image HorizontalAlignment="Center" Height="60" VerticalAlignment="Top" Width="60" Source="icon.jpg"/>
+
         <Label Content="Название товара" HorizontalAlignment="Left" Margin="50,90,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="TBCommondity" HorizontalAlignment="Left" Height="30" Width="200" Margin="50,120,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content="Тип продукции" HorizontalAlignment="Left" Margin="50,170,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <ComboBox x:Name="CBCommondity" SelectedValue="{Binding Id}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="30" Margin="50 200 0 0" FontSize="18"/>
-        <Label Content="Размер" HorizontalAlignment="Left" Margin="50,250,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <ComboBox x:Name="CBCommonditySize" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="30" Margin="50 280 0 0" FontSize="18">
-            <ComboBoxItem Content="42" />
-            <ComboBoxItem Content="44" />
-            <ComboBoxItem Content="46" />
-            <ComboBoxItem Content="48" />
-            <ComboBoxItem Content="50" />
-            <ComboBoxItem Content="52" />
-            <ComboBoxItem Content="54" />
-        </ComboBox>
+        <ComboBox x:Name="CBCommondity" SelectedValue="{Binding Id}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="30" Margin="50 120 0 0" FontSize="18"/>
+        
+        <Label Content="Поставщик" HorizontalAlignment="Left" Margin="50,170,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="CBProvider" SelectedValue="{Binding Id}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="30" Margin="50 200 0 0" FontSize="18"/>
+        
+        <Label Content="Стоимость" HorizontalAlignment="Left" Margin="50,250,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="TBCost" HorizontalAlignment="Left" Height="30" Width="200" Margin="50,280,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Width="200" Margin="0,0,0,30"
                             Background="Honeydew" FontSize="22" Click="ButtonAdd" Name="BAdd"/>
     </Grid>

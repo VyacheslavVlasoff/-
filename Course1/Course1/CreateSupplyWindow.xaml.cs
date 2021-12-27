@@ -40,6 +40,12 @@ namespace Course1
             CB.DisplayMemberPath = "CompanyName";
             CB.SelectedValuePath = "Id";
             CB.SelectedIndex = 0;
+
+            CBWarehouse.ItemsSource = dbcontext.GetAllWarehouse();
+            CBWarehouse.DisplayMemberPath = "Addres";
+            CBWarehouse.SelectedValuePath = "Id";
+            CBWarehouse.SelectedIndex = 0;
+
             CreateSupplyData.ItemsSource = service.WarehouseCheck(CB.SelectedIndex+1);
         }
 
@@ -58,7 +64,7 @@ namespace Course1
                 .Select(l => l.Quantity = int.Parse((CreateSupplyData2.Columns[6].GetCellContent(CreateSupplyData2.Items[i]) as TextBlock).Text)).ToList();
             }
 
-            service.MakeSupply(csd);
+            service.MakeSupply(csd, CBWarehouse.SelectedIndex + 1);
             MessageBox.Show("Поставка успешно создана");
             MainWindow mw = new MainWindow(dbcontext, service);
             mw.SupplyData.ItemsSource = dbcontext.GetAllSupply();

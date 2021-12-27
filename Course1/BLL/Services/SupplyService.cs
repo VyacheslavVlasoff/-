@@ -51,7 +51,7 @@ namespace BLL.Services
               Size = i.i.COMMONDITY.SIZE,
               ProviderId = i.j.PROVIDER_ID,
               Provider = i.j.PROVIDER.FAMILY_NAME,
-              Cost = i.i.PER_UNIT_COST,
+              Cost = i.j.COST,
               check = false,
               Quantity = i.i.QUANTITY
               
@@ -60,7 +60,7 @@ namespace BLL.Services
             return request;
         }
 
-        public bool MakeSupply(List<CreateSupplyData> csd)
+        public bool MakeSupply(List<CreateSupplyData> csd, int IdWar)
         {
             DBDataOperation dbcontext = new DBDataOperation(db);
             decimal sum = 0;
@@ -73,7 +73,7 @@ namespace BLL.Services
                 APPLICATION_DATE = DateTime.Now,
                 //PROVIDER_ID = Convert.ToInt32(csd.Select(l => l.ProviderId).ToList()),
                 STATUS_ID = 2,
-                WAREHOUSE_ID = 1,
+                WAREHOUSE_ID = IdWar,
                 APPLICANT_ID = 1,
             };
             csd.Select(l => s.PROVIDER_ID = l.ProviderId).ToList();
