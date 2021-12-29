@@ -89,7 +89,7 @@ namespace DAL.Repository
                 QUANTITY = l.Quantity
             })).ToList();
 
-            csd.Where(i => i.CommonId == db.WAREHOUSE_LINE.Find(i.CommonId).ID)
+            csd.Where(i => i.CommonId == db.WAREHOUSE_LINE.Find(i.CommonId).ID && i.check == true)
                .Select(i => db.WAREHOUSE_LINE.Find(i.CommonId).QUANTITY += i.Quantity)
                .ToList();
             //dbcontext.CreateWarehouseLine(csd);

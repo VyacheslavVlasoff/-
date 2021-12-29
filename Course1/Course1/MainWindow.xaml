@@ -59,7 +59,7 @@
                             <DataGridComboBoxColumn x:Name="StatusBox" Header="Статус заказа" SelectedValueBinding="{Binding Status}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Изменить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,10,10,0" 
+                    <Button Content="Обновить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,10,10,0" 
                             Background="Honeydew" FontSize="22" Click="ChangeSupply" Name="ChangeS" Grid.Column="2"/>
                     <Button Content="Оформить" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="200" Margin="0,60,10,0" 
                             Background="Honeydew" FontSize="22" Click="AddSupply" Name="AddS" Grid.Column="2"/>
@@ -70,9 +70,21 @@
 
             <TabItem Header="Склады" Width="200" Height="30">
                 <Grid>
-                    <DataGrid Name="WarehouseData" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0 0 250 0"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="WarehouseData" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,250,0"
                               RowHeight="40" ColumnWidth="*" ColumnHeaderHeight="30" FontSize="14"
-                               CanUserAddRows="False" AutoGenerateColumns="False">
+                               CanUserAddRows="False" AutoGenerateColumns="False" SelectionChanged="WarehouseData_SelectionChanged">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Count}" Value="(0, 100)">
+                                        <Setter Property="Background" Value="Red"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Продукция" Binding="{Binding Name}"/>

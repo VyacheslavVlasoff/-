@@ -147,7 +147,14 @@ namespace Course1
 
         private void ChangeSupply(object sender, RoutedEventArgs e)
         {
-
+            SupplyData.ItemsSource = dbcontext.GetAllSupply();
+            WarehouseData.ItemsSource = service.createWarehouseLine();
+            //PrintDialog dialog = new PrintDialog();
+            //ReportWindow rw = new ReportWindow();
+            //if (dialog.ShowDialog() == true)
+            //{
+            //    dialog.PrintVisual(rw.Report, "Накладная");
+            //}
         }
 
         private void AddSupply(object sender, RoutedEventArgs e)
@@ -194,6 +201,18 @@ namespace Course1
         private void CommondityData_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            
+        }
+
+        private void WarehouseData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            //for (int i = 0; i < WarehouseData.Items.Count; i++)
+            //{
+            //    if (int.Parse((WarehouseData.Columns[4].GetCellContent(WarehouseData.Items[i]) as TextBlock).Text) < 5)
+            //    {
+            //        (WarehouseData.Columns[4].GetCellContent(WarehouseData.Items[i]) as TextBlock).Background = Brushes.Red;
+            //    }
+            //}
         }
     }
 }

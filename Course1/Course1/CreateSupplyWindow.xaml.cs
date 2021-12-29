@@ -57,10 +57,12 @@ namespace Course1
             for (int i = 0; i < CreateSupplyData2.Items.Count; i++)
             {
                 csd.Where(l => l.Name == (CreateSupplyData2.Columns[1].GetCellContent(CreateSupplyData2.Items[i]) as TextBlock).Text
-                && l.Size == int.Parse((CreateSupplyData2.Columns[3].GetCellContent(CreateSupplyData2.Items[i]) as TextBlock).Text))
+                && l.Size == int.Parse((CreateSupplyData2.Columns[3].GetCellContent(CreateSupplyData2.Items[i]) as TextBlock).Text)
+                && l.ProviderId == CB.SelectedIndex + 1)
                 .Select(l => l.check = true).ToList();
                 csd.Where(l => l.Name == (CreateSupplyData2.Columns[1].GetCellContent(CreateSupplyData2.Items[i]) as TextBlock).Text
-                && l.Size == int.Parse((CreateSupplyData2.Columns[3].GetCellContent(CreateSupplyData2.Items[i]) as TextBlock).Text))
+                && l.Size == int.Parse((CreateSupplyData2.Columns[3].GetCellContent(CreateSupplyData2.Items[i]) as TextBlock).Text)
+                && l.ProviderId == CB.SelectedIndex + 1)
                 .Select(l => l.Quantity = int.Parse((CreateSupplyData2.Columns[6].GetCellContent(CreateSupplyData2.Items[i]) as TextBlock).Text)).ToList();
             }
 
@@ -69,6 +71,9 @@ namespace Course1
             MainWindow mw = new MainWindow(dbcontext, service);
             mw.SupplyData.ItemsSource = dbcontext.GetAllSupply();
             mw.WarehouseData.ItemsSource = service.createWarehouseLine();
+
+            ReportWindow rw = new ReportWindow(csd.Where(i => i.check == true).ToList());
+            rw.Show();
             Close();
 
         }

@@ -171,7 +171,7 @@ namespace BLL
 
         public void UpdateWarehouseLine(List<SupplyService.CreateSupplyData> c)
         {
-            c.Where(i => i.CommonId == db.WAREHOUSE_LINE.GetItem(i.CommonId).ID)
+            c.Where(i => i.CommonId == db.WAREHOUSE_LINE.GetItem(i.CommonId).ID && i.check == true)
                 .Select(i => db.WAREHOUSE_LINE.GetItem(i.CommonId).QUANTITY += i.Quantity)
                 .ToList();
             Save();
